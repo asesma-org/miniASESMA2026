@@ -1,0 +1,14 @@
+&CONTROL
+   calculation      = 'md'
+   prefix           = 'tmp'
+   disk_io          = 'none'
+   pseudo_dir       = '.'
+/
+&SYSTEM
+   ibrav            = 0
+   nat              = 3
+   ntyp             = 2
+   ecutwfc          = 40
+   nosym            = .true.
+/
+
