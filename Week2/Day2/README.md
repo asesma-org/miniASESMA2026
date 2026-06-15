@@ -1,26 +1,28 @@
-# Day2 :
----------
+### Topics of Day-3 hands-on session
 
-### Topics of the Day2 hands-on session
+- Forces and relaxation
+- Phonons
 
-* Compare nonmagnetic  and ferromagnetic solutions for Fe(bcc).
-* Influence of pressure on magnetism in metals. Fe(bcc) example
-* See how different magnetic moments in transition metals are related to the occupations of their 3d bands.
-* Plotting bands in spin polarized and noncollinear magnetic Ni fcc
+-----------
+**Exercise 1:** Relaxation: relaxing the atomic position and unit cell `relax` and `vc-relax` modes using 
+    
+    cd example1.relaxation/
+    
+**Exercise 2:** Phonons in non-polar materials: the basics of `ph.x`, calculation of phonons at Gamma
 
-----------
-**Exercise 1:**  
-  * Compute optimized lattice constants for the spin polarized and non magnetic solutions for Fe(bcc) using LDA. Compute DOS and projected DOS for the  two systems at the optimized lattice constant.
-  * to run the exercise:  `> cd example1.ferromagnetic_vs_nonmagnetic`   
+    cd example2.phonon.Gamma.Si/
 
-**Exercise 2:**
-  * Study the evolution of the Fe estimated magnetic moment at different value of the lattice constant. Using pDOS see how the  trend on magnetic moment reflects the variation of the exchange splitting of Fe 3d related bands.
-  * to run the exercise: `> cd exercise2.pressure_dependence`
+**Exercise 3:** Phonons in non-polar materials: the basics of `ph.x`, calculation of phonon dispersion
 
-**Exercise 3:**
-  *  Compare the magnetic properties of metallic Fe(bcc), Co(hcp), and Ni (fcc).
-  * to run the exercise: `> cd exercise3`
+    cd example3.phonon.dispersion.Si/
 
-**Exercise 4:**
-  * How to compute bands for Ni(fcc) with spin-polarized and noncollinear DFT.
-  * to run the exercise: `> cd exercise4.bands` 
+**Exercise 4:** Phonons in polar materials: `ph.x` calculation of phonons at Gamma with LO-TO splitting
+
+    cd example4.phonon.Gamma.AlAs/
+
+**Exercise 5 (Optional):** Phonons in polar materials: `ph.x` calculation of phonon dispersion with LO-TO splitting
+
+    cd example5.phonon.dispersion.AlAs/
+
+------------------------------------------------------------------------
+
