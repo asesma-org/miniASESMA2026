@@ -1,30 +1,13 @@
-mini-ASESMA school: Atomistic and quantum simulation of materials
+# miniASESMA school 2026 (Accra, Ghana)
 
-https://www.ug.edu.gh/physics/index.php/node/192
+Website of the event: https://www.ug.edu.gh/physics/node/192
 
-WEEK 1 
+This is a collection of the hands-on material based on density-functional theory (DFT), density-functional perturbation theory (DFPT), time-dependent density-functional theory (TDDFT) and beyond using Quantum ESPRESSO [1], Siesta [2], and other codes.
 
-Day 1 - Fundamentals of quantum mechanics (Javier)
+## Quantum Mobile:
+The hands-on can be done based on teh custom version of the Quantum Mobile for this school: https://github.com/marvel-nccr/quantum-mobile/blob/support/asesma/custom/README.md
 
-Day 2 - Morning: Fundamentals of solid-state physics (Javier) 
-
-Day 2 - Afternoon: Foundamentals of DFT 1 (functional derivatives, KS equations) (Michele & Valeria & Ezekiel) + Poster session & Flash talks 
-
-Day 3 - Fundamentals of DFT 2 (plane waves, DFTpy classes, implement your own SCF, FD distribution, KS Hamiltonian diagonalization, density mixing, QE in Python: QEpy) (Michele & Valeria & Ezekiel)
-
-Day 4 - Basis sets (atomic orbitals), pseudopotentials, SIESTA (Javier)
-
-Day 5 - TDDFT (KS and OF) and machine learning methods (QMLearn) (Michele & Valeria & Ezekiel)
-
-WEEK 2
-
-Day 1 - XC functionals (Iurii & Valentina)
-
-Day 2 - Magnetism (Jose)
-
-Day 3 - Phonons (Garu & Iurii & Valentina)
-
-Day 4 - TDDFT standard (Iurii & Valentina)
-
-Day 5 - Projects
+## Bibliography
+1. https://www.quantum-espresso.org/
+2. https://siesta-project.org/siesta/About/overview.html
 
