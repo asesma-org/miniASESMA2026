@@ -1,7 +1,4 @@
-### Topics of Day-3 hands-on session
-
-- Forces and relaxation
-- Phonons
+### Forces, relaxation, and phonons
 
 -----------
 **Exercise 1:** Relaxation: relaxing the atomic position and unit cell `relax` and `vc-relax` modes using 
