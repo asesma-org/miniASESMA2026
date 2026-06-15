@@ -1,0 +1,162 @@
+*******************************************************************************
+WARNING: BEFORE RUNNING A CALCULATION FOR PRODUCTION,
+TEST THE PSEUDOPOTENTIAL AND BASIS SETS, AND PERFORM
+THE CONVERGENCE TESTS (MESH CUTOFF, ETC.)
+
+IN THE PRESENT EXAMPLES, AND IN ORDER TO SPEED THE CALCULATIONS,
+WE PROVIDE SOME VALUES OF THESE PARAMETERS FOR YOU.
+
+WE DO NOT WARRANTY THAT THE VALUES OF THESE PARAMETERS ARE CONVERGED.
+
+THE RESULTS PRESENTED BELOW HAVE BEEN OBTAINED USING:
+Version of Siesta: siesta-3.0-b (serial mode)
+Compiler: g95 (version 0.92)
+Compilation flags: FFLAGS= -O2 -Wall
+                   FPPFLAGS= -DGRID_DP $(FPPFLAGS_CDF) $(FPPFLAGS_MPI)
+Double precision for the grid variables enabled.
+No linear algebra libraries used.
+RESULTS MIGHT DIFFER SLIGHTLY DEPENDING ON THE PLATFORM, COMPILER,
+AND COMPILATION FLAGS
+
+---------------------------------------------------------------------
+Alberto Garcia and Javier Junquera (2016)
+albertog@icmab.es
+javier.junquera@unican.es
+---------------------------------------------------------------------
+*******************************************************************************
+
+All the lines after the $ should be written by the user in the command line.
+
+* To run this example, the user has to compile some auxiliary codes 
+included in the Util directory
+
+$ cd <your_SIESTA_directory>/Util/COOP
+$ make OBJDIR=Obj
+
+$ cd <your_SIESTA_directory>/Util/Bands
+$ make OBJDIR=Obj
+
+Replace Obj by the directory where you have compiled siesta 
+(the path should start at the same level than the Obj or Src directories)
+
+* Edit the input file, SrTiO3.fdf, and study the different variables.
+Pay special attention to the new variable in this example, and
+check their meaning in the User's Guide:
+
+COOP.Write              .true.
+WFS.Write.For.Bands     .true.
+WFS.band.min
+WFS.band.max
+
+* Select the lattice constant wich minimizes the total energy of the
+system (in this case, you do not have to compute it; it is given to 
+you and amounts to 3.874 Ang). Run the code setting the right lattice
+constant in the input.
+Once the input is ready, run a command like this:
+
+$ siesta < SrTiO3.fdf > SrTiO3.fatbands.out
+
+* Siesta produces new files with the Hamiltonian, Overlap and wavefunctions
+written in the required format. 
+These files have the extensions .HSX and .WFSX
+
+$ ls -ltr *HSX *.WFSX
+-rw-r--r--  1 javier  staff  2316008  8 jun 11:43 SrTiO3.HSX
+-rw-r--r--  1 javier  staff  4770048  8 jun 11:44 SrTiO3.fullBZ.WFSX
+-rw-r--r--  1 javier  staff  2125392  8 jun 11:44 SrTiO3.bands.WFSX
+
+Copy or move the SrTiO3.bands.WFSX to SrTiO3.WFSX
+
+$ cp SrTiO3.bands.WFSX SrTiO3.WFSX
+
+* Prepare a .mpr file, the input required to run the mprop program.
+It should look like this:
+
+$ more SrTiO3.mpr
+SrTiO3
+DOS
+fatbands_Sr_4s
+Sr_4s
+fatbands_Sr_4p
+Sr_4p
+fatbands_Ti_3s
+Ti_3s
+fatbands_Ti_3p
+Ti_3p
+fatbands_Ti_3d
+Ti_3d
+fatbands_O_2s
+O_2s
+fatbands_O_2p
+O_2p
+
+The first line is the SystemLabel
+The second line refers to the fact that we need to compute the PDOS for
+the creation of fat bands plots
+Then we include pair of lines: the first one with the output file where 
+the eigenvaules and the projection weight for the corresponding
+orbital will be stored.
+The orbitals sets are included as: Atomicsymbol_shell, as in the example above
+
+* Generate the files required to plot the fat bands:
+
+$ <your_path_to_siesta_directory>/Util/COOP/fat SrTiO3
+
+(do not write the .mpr extension)
+
+This will generate the following files:
+
+$ ls -ltr *EIGFAT
+-rw-r--r--  1 javier  staff  86009  6 may 14:19 SrTiO3.fatbands_Ti_3s.EIGFAT
+-rw-r--r--  1 javier  staff  86009  6 may 14:19 SrTiO3.fatbands_Sr_4s.EIGFAT
+-rw-r--r--  1 javier  staff  86009  6 may 14:19 SrTiO3.fatbands_Sr_4p.EIGFAT
+-rw-r--r--  1 javier  staff  86009  6 may 14:19 SrTiO3.fatbands_Ti_3p.EIGFAT
+-rw-r--r--  1 javier  staff  86009  6 may 14:19 SrTiO3.fatbands_Ti_3d.EIGFAT
+-rw-r--r--  1 javier  staff  86009  6 may 14:19 SrTiO3.fatbands_O_2s.EIGFAT
+-rw-r--r--  1 javier  staff  86009  6 may 14:19 SrTiO3.fatbands_O_2p.EIGFAT
+
+* Then, we use the eigfat2plot program to transform the previous files into
+other formats readable by plotters (like gnuplot)
+
+$<your_path_to_siesta_dir>/Util/Bands/eigfat2plot SrTiO3.fatbands_Sr_4s.EIGFAT > Sr.4s.dat
+$<your_path_to_siesta_dir>/Util/Bands/eigfat2plot SrTiO3.fatbands_Sr_4p.EIGFAT > Sr.4p.dat
+$<your_path_to_siesta_dir>/Util/Bands/eigfat2plot SrTiO3.fatbands_Ti_3s.EIGFAT > Ti.3s.dat
+$<your_path_to_siesta_dir>/Util/Bands/eigfat2plot SrTiO3.fatbands_Ti_3p.EIGFAT > Ti.3p.dat
+$<your_path_to_siesta_dir>/Util/Bands/eigfat2plot SrTiO3.fatbands_Ti_3d.EIGFAT > Ti.3d.dat
+$<your_path_to_siesta_dir>/Util/Bands/eigfat2plot SrTiO3.fatbands_O_2s.EIGFAT > O.2s.dat
+$<your_path_to_siesta_dir>/Util/Bands/eigfat2plot SrTiO3.fatbands_O_2p.EIGFAT > O.2p.dat
+
+* Produce the file to plot the band structure
+
+$<your_path_to_siesta_dir>/Util/Bands/new.gnubands SrTiO3.bands > SrTiO3.bands.dat
+
+
+* To plot the fat bands, simply type
+$ gnuplot
+gnuplot> plot "SrTiO3.bands.dat" u 1:2 w l, "Sr.4s.dat" using 1:2:(4*$3) with points pt 6 ps variable, "Sr.4p.dat" using 1:2:(4*$3) with points pt 6 ps variable, "Ti.3s.dat" using 1:2:(4*$3) with points pt 6 ps variable, "Ti.3p.dat" using 1:2:(4*$3) with points pt 6 ps variable, "Ti.3d.dat" using 1:2:(4*$3) with points pt 6 ps variable, "O.2s.dat" using 1:2:(4*$3) with points pt 6 ps variable, "O.2p.dat" using 1:2:(4*$3) with points pt 6 ps variable 
+
+
+To focus only on the top of the valence band, from gnuplot type
+gnuplot> set yrange [-70:5]
+gnuplot> replot
+
+If you want to focus only on the top of the valence band and the bottom
+of the conduction band
+
+gnuplot> set yrange [-12:-2]
+gnuplot> replot
+
+* To produce a postscript file with one of the previous figures
+First the number of these points, and then in two columns, the 
+
+gnuplot> set terminal postscript color
+gnuplot> set output "SrTiO3.fatbands.ps"
+gnuplot> replot
+gnuplot> quit
+
+* To generate a pdf file from the previous postscript
+
+$ ps2pdf SrTiO3.fatbands.ps
+
+
+

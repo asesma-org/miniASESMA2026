@@ -1,0 +1,138 @@
+*******************************************************************************
+WARNING: BEFORE RUNNING A CALCULATION FOR PRODUCTION,
+TEST THE PSEUDOPOTENTIAL AND BASIS SETS, AND PERFORM
+THE CONVERGENCE TESTS (MESH CUTOFF, ETC.) 
+
+IN THE PRESENT EXAMPLES, AND IN ORDER TO SPEED THE CALCULATIONS,
+WE PROVIDE SOME VALUES OF THESE PARAMETERS FOR YOU.
+
+WE DO NOT WARRANTY THAT THE VALUES OF THESE PARAMETERS ARE CONVERGED.
+
+THE RESULTS PRESENTED BELOW HAVE BEEN OBTAINED USING:
+Version of Siesta: siesta-3.0-b (serial mode)
+Compiler: g95 (version 0.92)
+Compilation flags: FFLAGS= -O2 -Wall
+                   FPPFLAGS= -DGRID_DP $(FPPFLAGS_CDF) $(FPPFLAGS_MPI)
+Double precision for the grid variables enabled.
+No linear algebra libraries used. 
+RESULTS MIGHT DIFFER SLIGHTLY DEPENDING ON THE PLATFORM, COMPILER,
+AND COMPILATION FLAGS
+*******************************************************************************
+
+All the lines after the $ should be written by the user in the command line.
+
+* Inspect the input files, Si.basis_size.fdf, and examine in detail 
+the different input variables. More information can be obtained from 
+the Siesta web page (http://www.icmab.es/siesta), following the link 
+Documentations, and then Manual.
+
+Pay spetial attention to the tag PAO.BasisSize
+
+******************************************************************************
+Run the examples and study the convergence of the structural and energetic
+properties as a function of the size of the basis size
+******************************************************************************
+
+In this particular example, 
+starting from the experimental structure, we are going to 
+perform a structural relaxation of the lattice vectors using
+the conjugate gradient minimization algorithm.
+The optimization of the unit cell vectors is carried out subject
+to two constraints:
+(i) the position of the  atoms in the unit cell are fixed at the 
+high symmetry points, and
+(ii) the shear stresses are nullified in order to keep the cell angles
+fixed to 60 degrees, characteristic of the fcc lattice.
+Regarding this minimization procedure, 
+pay particular attention to the input variables:
+
+MD.TypeOfRun       CG               # We are going to perform a 
+                                    #   Conjugate Gradient (CG) minimization
+MD.VariableCell    .true.           # Is the lattice relaxed together with
+                                    #   the atomic coordinates?
+MD.NumCGsteps      50               # Number of CG steps for
+                                    #   coordinate optimization
+MD.MaxStressTol    0.0005 eV/Ang**3 # Tolerance in the maximum
+                                    #   stress in a MD.VariableCell CG optimi.
+%block GeometryConstraints          # Constraints impossed on 
+   position   1   2                 #   the atomic positions 
+   stress     4   5   6             #   the shear stresses
+%endblock GeometryConstraints
+
+* Run the code for bulk Si with different basis set sizes
+
+$ siesta < Si.sz.fdf  > Si.sz.out
+$ siesta < Si.dz.fdf  > Si.dz.out
+$ siesta < Si.szp.fdf > Si.szp.out
+$ siesta < Si.dzp.fdf > Si.dzp.out
+
+* In the different output files, search for the number of Sankey-type
+orbitals included in the basis set:
+
+$ grep "number of Sankey-type orbitals" *out
+Si.dz.out:atom: Total number of Sankey-type orbitals:  8
+Si.dzp.out:atom: Total number of Sankey-type orbitals: 13
+Si.sz.out:atom: Total number of Sankey-type orbitals:  4
+Si.szp.out:atom: Total number of Sankey-type orbitals:  9
+
+* Study the PAO.Basis block for the different basis set sizes
+(see the .pdf file with the explanation, or study the Siesta User Guide,
+also you can study the exercise "Default").
+
+%block PAO.Basis                 # Define Basis set
+Si                    2                    # Species label, number of l-shells
+ n=3   0   2                         # n, l, Nzeta
+   5.007      4.419
+   1.000      1.000
+ n=3   1   2 P   1                   # n, l, Nzeta, Polarization, NzetaPol
+   6.271      5.007
+   1.000      1.000
+%endblock PAO.Basis
+
+* Now, we are going to study the relaxed structure and the energy
+
+In order to get this, edit the different output files,
+and search for:
+
+- The converged relaxed structure:
+Those lines (for the DZP basis set) should look like something close to  
+
+outcoor: Relaxed atomic coordinates (fractional):
+    0.00000000    0.00000000    0.00000000   1       1  Si
+    0.25000000    0.25000000    0.25000000   1       2  Si
+
+outcell: Unit cell vectors (Ang):
+        0.000000    2.705266    2.705266
+        2.705266    0.000000    2.705266
+        2.705266    2.705266    0.000000
+
+outcell: Cell vector modules (Ang)   :    3.825823    3.825823    3.825823
+outcell: Cell angles (23,13,12) (deg):     60.0000     60.0000     60.0000
+outcell: Cell volume (Ang**3)        :     39.5968
+
+- The Kohn-Sham energy for the converged relaxed structure
+
+siesta: Program's energy decomposition (eV):
+siesta: Ebs     =       -75.650988
+siesta: Eions   =       380.802124
+siesta: Ena     =       115.349306
+siesta: Ekin    =        81.916758
+siesta: Enl     =        29.311909
+siesta: DEna    =         3.716705
+siesta: DUscf   =         0.267046
+siesta: DUext   =         0.000000
+siesta: Exc     =       -65.238641
+siesta: eta*DQ  =         0.000000
+siesta: Emadel  =         0.000000
+siesta: Emeta   =         0.000000
+siesta: Emolmec =         0.000000
+siesta: Ekinion =         0.000000
+siesta: Eharris =      -215.479042
+siesta: Etot    =      -215.479041     ---> We are interested in this number
+siesta: FreeEng =      -215.479041
+
+* See how the total energy decreases with the number of atomic orbitals in
+the basis set (the problem is variational).
+
+* See also how the larger the size the basis sets, the smaller the lattice constant.
+

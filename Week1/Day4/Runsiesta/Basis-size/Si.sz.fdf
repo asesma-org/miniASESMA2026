@@ -1,0 +1,52 @@
+SystemName          Bulk Silicon
+SystemLabel         Si
+NumberOfSpecies	    1
+NumberOfAtoms       2
+
+%block ChemicalSpeciesLabel
+  1  14  Si
+%endblock ChemicalSpeciesLabel
+
+PAO.BasisSize        SZ     # Single-Zeta basis set
+                            # One radial parts for the s-shell (=> 1 orbitals)
+                            # One radial parts for the p-shell (=> 3 orbitals)
+                            #                                 ----------------
+                            #                                 4 orbitals/Si atom
+
+LatticeConstant      5.43 Ang # We start from the experimental lattice constant
+%block LatticeVectors
+  0.00  0.50  0.50
+  0.50  0.00  0.50
+  0.50  0.50  0.00
+%endblock LatticeVectors
+
+AtomicCoordinatesFormat   Fractional
+%block AtomicCoordinatesAndAtomicSpecies
+  0.00  0.00  0.00        1
+  0.25  0.25  0.25        1
+%endblock AtomicCoordinatesAndAtomicSpecies
+
+%block kgrid_Monkhorst_Pack
+   6  0  0  0.5
+   0  6  0  0.5
+   0  0  6  0.5
+%endblock kgrid_Monkhorst_Pack
+
+#
+# Molecular dynamics and relaxations
+#
+
+MD.TypeOfRun       CG               # We are going to perform a
+                                    #   Conjugate-Gradient minimization
+MD.VariableCell    .true.           # Is the lattice relaxed together with
+                                    #   the atomic coordinates?
+MD.NumCGsteps      50               # Number of CG minimization steps for
+                                    #   cell optimization
+MD.MaxStressTol    0.0010 eV/Ang**3 # Tolerance in the maximum
+                                    #   stress in a MD.VariableCell CG optimi.
+
+%block GeometryConstraints          # Constraints impossed on
+   position   1   2                 #   the atomic positions
+   stress     4   5   6             #   the shear stresses
+%endblock GeometryConstraints
+
