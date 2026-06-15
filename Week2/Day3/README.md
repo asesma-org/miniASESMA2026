@@ -1,4 +1,4 @@
-# Day2 :
+### Magnetism
 ---------
 
 ### Topics of the Day2 hands-on session
