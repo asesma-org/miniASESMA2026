@@ -6,12 +6,12 @@
 
 1. Run the SCF ground-state calculation
 
-        mpirun -np 4 pw.x < Si.scf.in > Si.scf.out             
+        mpirun -np 2 pw.x < Si.scf.in |tee Si.scf.out             
 
 2. Run the phonon calculation
 
-        mpirun -np 4 ph.x < Si.ph.in > Si.ph.out
+        mpirun -np 2 ph.x < Si.ph.in |tee Si.ph.out
 
 3. Impose the acoustic sum rule at the Gamma point
 
-        mpirun -np 4 dynmat.x < Si.dynmat.in > Si.dynmat.out
+        mpirun -np 2 dynmat.x < Si.dynmat.in |tee Si.dynmat.out
