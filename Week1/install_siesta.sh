@@ -39,10 +39,10 @@ cmake \
 -DCMAKE_C_COMPILER="mpicc" \
 -DCMAKE_Fortran_COMPILER="mpifort" \
 -DSIESTA_WITH_NETCDF="ON" \
--DSIESTA_WITH_FLOOK="False” \ 
+-DSIESTA_WITH_FLOOK="False" \ 
 -DSCALAPACK_LINKER_FLAG="-lscalapack-openmpi" \
 -DSCALAPACK_LIBRARY="/usr/lib/x86_64-linux-gnu/libscalapack-openmpi.so.2.2" \
--DSIESTA_WITH_WANNIER90="ON" .. 2>&1 | tee ../siesta-configure.log
+-DSIESTA_WITH_WANNIER90="ON" ../ 2>&1 | tee ../siesta-configure.log
 
 
 make -j4 2>&1 | tee ../siesta-build.log
