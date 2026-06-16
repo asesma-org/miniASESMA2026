@@ -6,12 +6,12 @@
 
 1. Run the SCF ground-state calculation
 
-        mpirun -np 4 pw.x < AlAs.scf.in > AlAs.scf.out
+        mpirun -np 2 pw.x < AlAs.scf.in |tee AlAs.scf.out
 
 2. Run the phonon calculation at Gamma
 
-        mpirun -np 4 ph.x < AlAs.ph.in > AlAs.ph.out
+        mpirun -np 2 ph.x < AlAs.ph.in |tee AlAs.ph.out
 
 3. Impose the acoustic sum rule at the Gamma point and add the non-analytic LO-TO splitting
 
-        mpirun -np 4 dynmat.x < AlAs.dynmat.in > AlAs.dynmat.out
+        mpirun -np 2 dynmat.x < AlAs.dynmat.in |tee AlAs.dynmat.out
