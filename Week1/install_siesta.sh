@@ -9,7 +9,7 @@ sudo apt install libblas-dev
 sudo apt install liblapack3
 sudo apt install liblapack-dev
 sudo apt install libopenmpi-dev
-sudo apt install libscalapack-openmpi2.2)
+sudo apt install libscalapack-openmpi2.2
 sudo apt install libscalapack-openmpi-dev
 sudo apt install libreadline-dev
 sudo apt install lua-readline
@@ -18,7 +18,7 @@ sudo apt install libnetcdf-mpi-dev
 sudo apt install libnetcdff-dev
 sudo apt install libfftw3-dev
 sudo apt install libfftw3-mpi-dev
-sudo apt install python3.12-dev)
+sudo apt install python3.12-dev
 sudo apt install libopenblas-dev
 
 cd 
