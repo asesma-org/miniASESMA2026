@@ -16,8 +16,8 @@ set label "{/Symbol G}" at 3.37,-20
 set label "L" at 4.1897,-20
 
 #plot "freq.plot" u 1:2 w l lw 2 title 'q-grid: 4x4x4'
+#     "reference/freq_q-grid-222.plot" u 1:2 w l lw 2 title 'q-grid: 2x2x2', \
 
 plot "freq.plot" u 1:2 w l lw 2 title 'q-grid: 4x4x4', \
-     "reference/freq_q-grid-222.plot" u 1:2 w l lw 2 title 'q-grid: 2x2x2', \
      "reference/data_direct_calculation.dat" u 1:2 w p pt 5 title 'direct calculation', \
      "reference/data_experimental.dat" u 1:2 w p pt 7 title 'experimental data'
