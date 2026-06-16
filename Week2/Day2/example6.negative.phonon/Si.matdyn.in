@@ -1,7 +1,7 @@
  &input
     asr='simple',  
     amass(1)=28.0855, 
-    flfrc='Si444.fc', 
+    flfrc='Si222.fc', 
     flfrq='Si.freq'
  /
 396
