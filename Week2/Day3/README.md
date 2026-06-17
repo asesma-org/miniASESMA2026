@@ -1,12 +1,13 @@
 ### Magnetism
 ---------
 
-### Topics of the Day2 hands-on session
+### Topics of the Day3 hands-on session
 
 * Compare nonmagnetic  and ferromagnetic solutions for Fe(bcc).
 * Influence of pressure on magnetism in metals. Fe(bcc) example
 * See how different magnetic moments in transition metals are related to the occupations of their 3d bands.
 * Plotting bands in spin polarized and noncollinear magnetic Ni fcc
+*  Plotting spin-resolved bands for a 2D magnetic CrSBr monolayer
 
 ----------
 **Exercise 1:**  
