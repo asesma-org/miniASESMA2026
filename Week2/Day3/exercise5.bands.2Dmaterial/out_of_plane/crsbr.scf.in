@@ -1,0 +1,34 @@
+ &control
+    calculation='scf',
+    restart_mode='from_scratch',
+    pseudo_dir='/u/jojaibal/QuantumEspresso/pseudopotentials/',
+    outdir='./tmp',
+    prefix='crsbr',
+ /
+ &system
+    ibrav=8, celldm(1)=6.805597590, celldm(2)=1.337896944, celldm(3)=6.544944737,
+    nat=6, ntyp=3,
+    nspin=2, starting_magnetization(1)=0.3,
+    ecutwfc=60, ecutrho=600,
+    occupations='smearing', smearing='m-v', degauss=0.01
+ /
+ &electrons
+    diagonalization='david'
+    conv_thr = 1.0000000000d-07
+    mixing_beta = 4.0000000000d-01
+ /
+ATOMIC_SPECIES
+ Cr 51.996 Cr.pbe-spn-rrkjus_psl.1.0.0.UPF
+ S  32.065 S.pbe-nl-rrkjus_psl.1.0.0.UPF
+ Br 79.904 Br.pbe-n-rrkjus_psl.1.0.0.UPF
+
+ATOMIC_POSITIONS crystal
+ Cr 0.7500000000 0.2500000000 0.076850176
+ Cr 0.2500000000 0.7500000000 0.166174403
+ S  0.7500000000 0.7500000000 0.097098680
+ S  0.2500000000 0.2500000000 0.145928129
+ Br 0.2500000000 0.2500000000 0.000000000
+ Br 0.7500000000 0.7500000000 0.243027453
+
+K_POINTS AUTOMATIC
+5 5 1 0 0 0
