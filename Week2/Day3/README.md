@@ -23,4 +23,13 @@
 
 **Exercise 4:**
   * How to compute bands for Ni(fcc) with spin-polarized and noncollinear DFT.
-  * to run the exercise: `> cd exercise4.bands` 
+  * to run the exercise: `> cd exercise4.bands`
+
+**Exercise 5:**
+
+* Compute the spin-resolved band structure of a CrSBr monolayer. Compare the electronic dispersion along an in-plane high-symmetry path with the out-of-plane Γ–A direction to illustrate the two-dimensional nature of the material.
+
+* to run the exercise:
+> cd exercise5.bands.2Dmaterial/in_plane
+and
+> cd exercise5.bands.2Dmaterial/out_of_plane
