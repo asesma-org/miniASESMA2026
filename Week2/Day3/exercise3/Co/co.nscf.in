@@ -1,8 +1,8 @@
  &control
     calculation='nscf'
     restart_mode='from_scratch',
-    !pseudo_dir = '~/QE-2021/pseudo/',
-    !outdir='./tempdir/',
+    pseudo_dir = '../../../pseudo'
+    outdir='./tmp'
     prefix='co'
  /
  &system
