@@ -1,5 +1,5 @@
  &dos
-    !outdir='./tempdir/',
+    outdir='./tmp',
     prefix='co',
     fildos='co.dos',
     Emin=5.0, Emax=25.0, DeltaE=0.05
