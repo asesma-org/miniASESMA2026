@@ -1,8 +1,8 @@
  &control
     calculation='nscf'
     restart_mode='from_scratch',
-    !pseudo_dir = '~/pseudo/',
-    !outdir='./tempdir/'
+    pseudo_dir = '../../../../pseudo'
+    outdir='./tmp'
     prefix='fe'
  /
  &system
