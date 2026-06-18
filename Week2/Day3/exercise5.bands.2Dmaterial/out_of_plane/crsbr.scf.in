@@ -1,8 +1,8 @@
  &control
     calculation='scf',
     restart_mode='from_scratch',
-    pseudo_dir='/u/jojaibal/QuantumEspresso/pseudopotentials/',
-    outdir='./tmp',
+    pseudo_dir = '../../../pseudo'
+    outdir='./tmp'
     prefix='crsbr',
  /
  &system
