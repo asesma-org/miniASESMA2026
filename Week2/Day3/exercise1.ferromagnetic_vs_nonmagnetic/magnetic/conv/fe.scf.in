@@ -1,8 +1,8 @@
  &control
     calculation='scf'
     restart_mode='from_scratch',
-    ! pseudo_dir = '~/pseudo/', !uncomment and set this if ESPRESSO_PSEUDO  env-variable is unset 
-    !outdir='./tempdir/'
+    pseudo_dir = '../../../../pseudo'
+    outdir='./tmp'
     prefix='fe'
  /
  &system
