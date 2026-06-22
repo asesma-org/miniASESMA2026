@@ -1,25 +1,32 @@
-### Forces, relaxation, and phonons
+### Magnetism
+---------
 
------------
-**Exercise 1:** Relaxation: relaxing the atomic position and unit cell `relax` and `vc-relax` modes using 
-    
-    cd example1.relaxation/
-    
-**Exercise 2:** Phonons in non-polar materials: the basics of `ph.x`, calculation of phonons at Gamma
+### Topics of the Day3 hands-on session
 
-    cd example2.phonon.Gamma.Si/
+* Compare nonmagnetic  and ferromagnetic solutions for Fe(bcc).
+* Influence of pressure on magnetism in metals. Fe(bcc) example
+* See how different magnetic moments in transition metals are related to the occupations of their 3d bands.
+* Plotting bands in spin polarized and noncollinear magnetic Ni fcc
+*  Plotting spin-resolved bands for a 2D magnetic CrSBr monolayer
 
-**Exercise 3:** Phonons in non-polar materials: the basics of `ph.x`, calculation of phonon dispersion
+----------
+**Exercise 1:**  
+  * Compute optimized lattice constants for the spin polarized and non magnetic solutions for Fe(bcc) using LDA. Compute DOS and projected DOS for the  two systems at the optimized lattice constant.
+  * to run the exercise:  `> cd example1.ferromagnetic_vs_nonmagnetic`   
 
-    cd example3.phonon.dispersion.Si/
+**Exercise 2:**
+  * Study the evolution of the Fe estimated magnetic moment at different value of the lattice constant. Using pDOS see how the  trend on magnetic moment reflects the variation of the exchange splitting of Fe 3d related bands.
+  * to run the exercise: `> cd exercise2.pressure_dependence`
 
-**Exercise 4:** Phonons in polar materials: `ph.x` calculation of phonons at Gamma with LO-TO splitting
+**Exercise 3:**
+  *  Compare the magnetic properties of metallic Fe(bcc), Co(hcp), and Ni (fcc).
+  * to run the exercise: `> cd exercise3`
 
-    cd example4.phonon.Gamma.AlAs/
+**Exercise 4:**
+  * How to compute bands for Ni(fcc) with spin-polarized and noncollinear DFT.
+  * to run the exercise: `> cd exercise4.bands`
 
-**Exercise 5 (Optional):** Phonons in polar materials: `ph.x` calculation of phonon dispersion with LO-TO splitting
+**Exercise 5:**
 
-    cd example5.phonon.dispersion.AlAs/
-
-------------------------------------------------------------------------
-
+* Compute the spin-resolved band structure of a CrSBr monolayer. Compare the electronic dispersion along an in-plane high-symmetry path with the out-of-plane Γ–A direction to illustrate the two-dimensional nature of the material.
+* to run the exercise: `> cd exercise5.bands.2Dmaterial/in_plane` and > `cd exercise5.bands.2Dmaterial/out_of_plane`

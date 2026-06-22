@@ -1,14 +1,11 @@
-## exercise-2.a 
+# Run the calculations in the following way:
 
-Perform convergence tests of the total energy of Si using the 
-PBE0 functional and x_gamma_extrapolation = .true.
-Use q-point meshes 1x1x1, 2x2x2, 4x4x4, 8x8x8.
+mpirun -n 2 pw.x < FeO.scf.in |tee FeO.scf.out
 
-   mpirun -n 2 pw.x < Si.scf.in |tee Si.scf.out
+mpirun -n 2 pw.x < FeO.nscf.in |tee FeO.nscf.out
 
-## exercise-2.b
+mpirun -n 2 projwfc.x < FeO.projwfc.in |tee FeO.projwfc.out
 
-Perform convergence tests of the total energy of Si (as above) 
-using the PBE0 functional and x_gamma_extrapolation = .false.
+gnuplot plot_pdos.gp
 
-In which case the convergence is faster?
+evince FeO_PDOS.eps
