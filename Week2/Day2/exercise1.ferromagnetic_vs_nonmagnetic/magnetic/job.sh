@@ -11,7 +11,7 @@ cat >fe.scf.$latt.in <<EOF
  &control
     calculation='scf'
     restart_mode='from_scratch',
-    !pseudo_dir = './pseudo/',
+    pseudo_dir = './../../../pseudo/',
     !outdir='./tempdir/'
     prefix='fe'
  /
@@ -34,7 +34,7 @@ K_POINTS AUTOMATIC
  10 10 10 1 1 1  
 EOF
 
-mpirun -np $NPROC $PW  < fe.scf.$latt.in -nk 2  >  fe.scf.$latt.out  
+mpirun -np 2 $PW  < fe.scf.$latt.in -nk 2  >  fe.scf.$latt.out  
 echo $latt `grep ! fe.scf.$latt.out | awk '{print $5}'` >> energies.dat 
 echo $latt "done" 
 done 

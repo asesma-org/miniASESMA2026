@@ -1,5 +1,4 @@
 Ef=17.901 
-set font "Arial,18" 
 set grid xtics lw 3 lt 1 lc "black"
 set border lw 3 
 set xtics ("{/Symbol G}"  0.0, "L"  0.866, "W"  1.5731, "X" 2.0731,  "{/Symbol G}" 3.0731, "K" 4.1338) 

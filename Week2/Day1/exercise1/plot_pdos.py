@@ -28,5 +28,5 @@ plt.xticks(np.arange(-10, 9, 2))
 plt.yticks(np.arange(0, 7, 1))
 plt.legend()
 plt.tight_layout()
-plt.savefig("CoO_PDOS.pdf")
+plt.savefig("./CoO_PDOS.pdf")
 

@@ -8,11 +8,11 @@ _Compare the magnetic properties of three different transition metals Fe(bcc), C
     * go in the `Fe` directory:
     * run an SCF calculation:
 
-          pw.x < fe.scf.in > fe.scf.out
+            mpirun -n 2 pw.x < fe.scf.in > fe.scf.out
 
      * extract **total magnetization** from `fe.scf.out`. At the end of the calculation the resulting total magnetization is reported in the file. It is actually printed at each step of the SCF cycle. To extract the  final value from the output you may use a comandlike:
 
-           grep "total magnetization" fe.scf.out | tail -1 
+          grep "total magnetization" fe.scf.out | tail -1 
      
           In this case you should obtain: 
 
@@ -22,6 +22,7 @@ _Compare the magnetic properties of three different transition metals Fe(bcc), C
 * check also the **magnetization per ionic site**. An estimate of the magnetic moment of each ion in the cell is printed in the outputf file. The estimate  is done integrating the magnetization inside a sphere centered at each site; the integration radii are  chosen so as  to avoid overlapping regions. These quantities may be useful but must always be taken with caution. 
   
        grep -A 1 "Magnetic moment" fe.scf.out  | grep "atom:    1"
+
   you will get something like this:
 
 ```
@@ -30,13 +31,15 @@ _Compare the magnetic properties of three different transition metals Fe(bcc), C
 ```
 
 * run a non-SCF calculation with finer k-grid than SCF calculation for DOS:
-                 pw.x < fe.nscf.in > fe.nscf.out
+
+            mpirun -n 2 pw.x < fe.nscf.in > fe.nscf.out
 
 
 
 * compute  DOS and PDOS:
-               dos.x < fe.dos.in > fe.dos.out
-               projwfc.x < fe.pdos.in > fe.pdos.out
+               
+            dos.x < fe.dos.in > fe.dos.out
+            projwfc.x < fe.pdos.in > fe.pdos.out
 
 * Magnetic properties of ions from Lowdin charges:
   * `projwfc.x` computes  the Lowdin charges for each ion and prints them at the end of the output file. 
@@ -90,15 +93,15 @@ _Compare the magnetic properties of three different transition metals Fe(bcc), C
 
 *  Repeat these procedures for Co and Ni. In the case of `Co` take into account that you have two ions in the simulation cell !!!
 
-         pw.x < co.scf.in > co.scf.out
-         pw.x < co.nscf.in > co.nscf.out
+         mpirun -n 2 pw.x < co.scf.in > co.scf.out
+         mpirun -n 2 pw.x < co.nscf.in > co.nscf.out
          dos.x < co.dos.in > co.dos.out
          projwfc.x < co.pdos.in > co.pdos.out
          sumpdos.x co.pdos_atm#1(Co)_wfc#3(d)  co.pdos_atm#2(Co))wfc#3(d)> co.3d.dat
 
 
-         pw.x < ni.scf.in > ni.scf.out
-         pw.x < ni.nscf.in > ni.nscf.out
+         mpirun -n 2 pw.x < ni.scf.in > ni.scf.out
+         mpirun -n 2 pw.x < ni.nscf.in > ni.nscf.out
          dos.x < ni.dos.in > ni.dos.out
          projwfc.x < ni.pdos.in > ni.pdos.out
          sumpdos.x ni.pdos_atm#1\(Ni\)_wfc#3\(d\) > ni.3d.dat
