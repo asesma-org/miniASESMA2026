@@ -1,0 +1,6 @@
+&BANDS
+    prefix='crsbr'
+    outdir='./tmp'
+    filband='crsbr.spindown.band_dat'
+    spin_component=2
+/

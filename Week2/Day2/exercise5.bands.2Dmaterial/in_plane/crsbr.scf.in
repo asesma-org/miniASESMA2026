@@ -9,7 +9,7 @@
     ibrav=8, celldm(1)=6.805597590, celldm(2)=1.337896944, celldm(3)=6.544944737,
     nat=6, ntyp=3,
     nspin=2, starting_magnetization(1)=0.3,
-    ecutwfc=60, ecutrho=600,
+    ecutwfc=30, ecutrho=300,
     occupations='smearing', smearing='m-v', degauss=0.01
  /
  &electrons
@@ -31,5 +31,5 @@ ATOMIC_POSITIONS crystal
  Br 0.7500000000 0.7500000000 0.243027453
 
 K_POINTS AUTOMATIC
-5 5 1 0 0 0
+3 3 1 0 0 0
 
