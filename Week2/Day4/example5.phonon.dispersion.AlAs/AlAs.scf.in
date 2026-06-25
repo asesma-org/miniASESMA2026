@@ -20,7 +20,7 @@ ecutrho = 280
 ATOMIC_SPECIES
  Al  26.98  Al.pbe-n-kjpaw_psl.1.0.0.UPF
  As  74.92  As.pbe-n-rrkjus_psl.0.2.UPF
-ATOMIC_POSITIONS 
+ATOMIC_POSITIONS crystal
  Al 0.00 0.00 0.00
  As 0.25 0.25 0.25
 K_POINTS automatic
