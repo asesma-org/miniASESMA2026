@@ -28,5 +28,5 @@ N.B. Open all the input files and try to understand them. Then, fill the parts t
         gnuplot plot_dispersion.gp
 
 6. Extra: can you spot the negative phonons? Why is that?
-   Now run AlAs from the top but change the **k-mesh** from 2 2 2 to 4 4 4 in AlAs.scf.in
+   Now run AlAs from the top but change the **k-mesh** from 2 2 2 to 4 4 4 in AlAs.scf.in.
    What happens to the phonos dispersion?
